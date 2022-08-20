@@ -4,6 +4,9 @@ jobs:
   test:
     docker:
       - image: node:alpine
+
+    working_directory: ~/hamada
+
     steps:
       - checkout
       - run:
@@ -11,6 +14,10 @@ jobs:
           command: |
             ls
             pwd
+            cd unit-testing
+            npm install
+            npm test
+
   print_world:
     docker:
       - image: alpine:latest
