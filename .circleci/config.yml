@@ -1,12 +1,16 @@
 version: 2.1
 
 jobs:
-  print_hello:
+  test:
     docker:
-      - image: busybox:latest
+      - image: node:alpine
     steps:
       # - checkout
-      - run: echo hello
+      - run:
+          name: "Run unit tests"
+          command: |
+            ls
+            pwd
   print_world:
     docker:
       - image: alpine:latest
@@ -16,5 +20,4 @@ jobs:
 workflows:
   welcome:
     jobs:
-      - print_hello
-      - print_world
+      - test
